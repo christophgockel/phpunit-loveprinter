@@ -1,5 +1,5 @@
 <?php
-class ResultPrinterTest extends PHPUnit_Framework_TestCase
+class MixedTest extends PHPUnit_Framework_TestCase
 {
   public function testSuccess()
   {
