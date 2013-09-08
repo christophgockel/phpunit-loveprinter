@@ -5,6 +5,8 @@ More love for developers!
 
 ## Example
 
+![Unit Tests with Love](https://github.com/christophgockel/phpunit-loveprinter/raw/master/phpunit-loveprinter.gif)
+
 ## Requirements
 
 The Love Printer works with PHP 5.3+ and PHPUnit 3.7+.
