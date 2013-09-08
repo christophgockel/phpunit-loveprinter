@@ -8,6 +8,9 @@ namespace ChristophGockel\PHPUnit;
  */
 class LovePrinter extends \PHPUnit_TextUI_ResultPrinter
 {
+  protected $safeshotPaddingDistance = 5;
+
+
   protected function writeProgress($progress)
   {
     switch ($progress) {
@@ -16,7 +19,7 @@ class LovePrinter extends \PHPUnit_TextUI_ResultPrinter
         break;
       case 'F':
       case 'E':
-        $progress = '</3';
+        $progress = '</3 ';
         break;
       default:
         $progress = '<? ';
@@ -26,6 +29,8 @@ class LovePrinter extends \PHPUnit_TextUI_ResultPrinter
     $this->write($progress);
     $this->column += strlen($progress);
     $this->numTestsRun++;
+
+    $this->assureAlignedOutput();
 
     if ($this->column >= $this->maxColumn) {
       $this->write(
@@ -41,6 +46,32 @@ class LovePrinter extends \PHPUnit_TextUI_ResultPrinter
 
       $this->writeNewLine();
     }
+  }
+
+  protected function assureAlignedOutput() {
+    if ($this->outputNeedsToBeAligned()) {
+      $this->writePadding();
+    }
+  }
+
+  protected function outputNeedsToBeAligned() {
+    return $this->lineLengthOverspill() <= 0;
+  }
+
+  protected function lineLengthOverspill() {
+    return $this->maxColumn - $this->column;
+  }
+
+  protected function writePadding() {
+    $this->write(str_pad(' ', $this->paddingLength()));
+  }
+
+  protected function paddingLength() {
+    return $this->safeshotPaddingDistance - $this->unnecessaryPadding();
+  }
+
+  protected function unnecessaryPadding() {
+    return abs($this->lineLengthOverspill());
   }
 }
 
