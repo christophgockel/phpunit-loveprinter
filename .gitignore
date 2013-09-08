@@ -1,5 +1,4 @@
 .DS*
-/phpunit.xml
 composer.lock
 composer.phar
 vendor/
