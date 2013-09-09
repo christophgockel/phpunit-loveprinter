@@ -55,10 +55,10 @@ class LovePrinter extends \PHPUnit_TextUI_ResultPrinter
   }
 
   protected function outputNeedsToBeAligned() {
-    return $this->lineLengthOverspill() <= 0;
+    return $this->remainingColumnsInLine() <= 0;
   }
 
-  protected function lineLengthOverspill() {
+  protected function remainingColumnsInLine() {
     return $this->maxColumn - $this->column;
   }
 
@@ -71,7 +71,7 @@ class LovePrinter extends \PHPUnit_TextUI_ResultPrinter
   }
 
   protected function unnecessaryPadding() {
-    return abs($this->lineLengthOverspill());
+    return abs($this->remainingColumnsInLine());
   }
 }
 

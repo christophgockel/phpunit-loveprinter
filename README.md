@@ -24,7 +24,7 @@ Create a `composer.json` file (or edit your existing one). Then add the folling 
 
 Finally run `php composer.phar install --dev` to install it.
 
-Once installed, the following attributes are needed in your `phpunit.xml` file (add them to the `<phpunit>`):
+Once installed, the following attributes are needed in your `phpunit.xml` file (add them to the `<phpunit>` element):
 
     printerFile="vendor/christophgockel/phpunit-loveprinter/src/ChristophGockel/PHPUnit/LovePrinter.php"
     printerClass="ChristophGockel\PHPunit\LovePrinter"
